@@ -34,7 +34,7 @@ public class Cart {
 	
 	private Double cartTotalAmount;
 	
-	@ElementCollection(fetch = FetchType.EAGER)
+	@ElementCollection
 	private List<CartProductDetails> listOfProducts = new ArrayList<>();
 
 	

@@ -46,12 +46,12 @@ public class PickUpOrderRequest {
 	
 	private Boolean isReturnOrderPickedUp;
 	
-	@JsonIgnore
+	
 	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "customerId")
 	private Customer customer;
 	
-	@JsonIgnore
+	
 	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "orderId")
 	private Order order;

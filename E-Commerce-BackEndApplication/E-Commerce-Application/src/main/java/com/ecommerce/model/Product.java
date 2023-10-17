@@ -51,7 +51,6 @@ public class Product {
 	
 	private Integer discountPercentage;
 	
-	@JsonProperty(access = Access.WRITE_ONLY)
 	private Integer stockQuantity;
 	
 	private Double rating;
@@ -63,13 +62,13 @@ public class Product {
 	@Column(columnDefinition = "boolean default true", nullable = false)
 	private Boolean avaiable;
 	
-	@JsonProperty(access = Access.WRITE_ONLY)
+	
 	@CreationTimestamp
 	@Column(nullable = false, updatable = false)
 	private LocalDateTime productAddedDateTime;
 	
 	
-	@JsonProperty(access = Access.WRITE_ONLY)
+	
 	@UpdateTimestamp
 	@Column(nullable = false)
 	private LocalDateTime productUpdatedDateTime;
@@ -84,7 +83,7 @@ public class Product {
 	@ElementCollection
 	private List<Image> images;
 	
-	@JsonProperty(access = Access.WRITE_ONLY)
+	
 	private Long totalSales;
 
 	public Integer getProductId() {
