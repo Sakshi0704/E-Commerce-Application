@@ -70,7 +70,7 @@ public class Order {
 	@Column(columnDefinition = "boolean default false",nullable = false)
 	private Boolean isOrderReturned;
 	
-	@Column(nullable = false)
+	@Column(columnDefinition = "boolean default false",nullable = false)
 	private Boolean isOrderReplaced;
 	
 	@Column(columnDefinition = "boolean default false", nullable = false)
