@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,7 +59,7 @@ public class AuthenticationController {
 		}
 	*/
 
-	@PostMapping("/customers/signup") 
+	@PostMapping("/users/signup") 
 	public ResponseEntity<Customer> registerUserHandler(@Valid @RequestBody Customer customer) {
 
 		customer.setRole(AppConstants.ROLE_USER);
@@ -80,7 +81,7 @@ public class AuthenticationController {
 		return new ResponseEntity<Customer>(saveAdmin, HttpStatus.CREATED);
 	}
 	
-	@PostMapping("/customers/signin")
+	@GetMapping("/users/signin")
 	public ResponseEntity<Customer> loginUserHandler(Authentication auth){
 		
 		Customer customer = customerService.getCustomerByEmail(auth.getName());
@@ -88,7 +89,7 @@ public class AuthenticationController {
 		return new ResponseEntity<Customer>(customer,HttpStatus.OK);			
 	}
 	
-	@PostMapping("/admins/signin")
+	@GetMapping("/admins/signin")
 	public ResponseEntity<Customer> loginAdminHandler(Authentication auth){
 		
 		Customer customer = customerService.getCustomerByEmail(auth.getName());
@@ -97,7 +98,6 @@ public class AuthenticationController {
 	}
 	
 	
-
 	
 
 }

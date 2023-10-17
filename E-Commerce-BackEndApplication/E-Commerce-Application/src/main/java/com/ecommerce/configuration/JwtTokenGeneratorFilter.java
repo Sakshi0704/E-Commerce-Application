@@ -66,7 +66,10 @@ public class JwtTokenGeneratorFilter extends OncePerRequestFilter{
 	//this make sure that this filter will execute only for first time when client call the api /signIn at first time
 	@Override
 	protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-			return !request.getServletPath().equals("/signIn");
+			
+		       boolean result = request.getServletPath().equals("/buymart/auth/users/signin") || request.getServletPath().equals("/buymart/auth/admins/signin");
+			
+		       return !result;
 		}
 
 }

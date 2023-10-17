@@ -20,15 +20,14 @@ import jakarta.servlet.http.HttpServletRequest;
 @Configuration
 public class SecurityConfiguration {
 
-	public static final String[] PUBLIC_URLS = {"/buymart/auth/customers/signup", 
-											"/buymart/auth/customers/signin",
+	public static final String[] PUBLIC_URLS = {"/buymart/auth/users/signup",
 												"/buymart/auth/admins/signup"
 			
 						};
 	
-	public static final String USER_ADMIN_URLS[] = {};
+	public static final String USER_ADMIN_URLS[] = {"/buymart/auth/users/signin"};
 	
-	public static final String ADMIN_URLS[] = {};
+	public static final String ADMIN_URLS[] = {"/buymart/auth/admins/signin"};
 	
 	
 	@Bean
