@@ -37,7 +37,7 @@ public class Role {
 	private String roleName;
 	
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "roles")
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "role")
 	private List<Customer> users = new ArrayList<>();
 
 	public Integer getRoleId() {
