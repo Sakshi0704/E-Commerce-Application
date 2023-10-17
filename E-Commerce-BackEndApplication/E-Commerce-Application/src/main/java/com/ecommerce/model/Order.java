@@ -27,9 +27,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Table(name = "orders")
 public class Order {
 
@@ -83,4 +83,133 @@ public class Order {
 	private Boolean isReplacementOrder;
 	
 	private Integer originalOrderId;
+
+	public Integer getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(Integer orderId) {
+		this.orderId = orderId;
+	}
+
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+
+	public LocalDateTime getOrderTimeStamp() {
+		return orderTimeStamp;
+	}
+
+	public void setOrderTimeStamp(LocalDateTime orderTimeStamp) {
+		this.orderTimeStamp = orderTimeStamp;
+	}
+
+	public LocalDateTime getOrderUpdatedTimeStamp() {
+		return orderUpdatedTimeStamp;
+	}
+
+	public void setOrderUpdatedTimeStamp(LocalDateTime orderUpdatedTimeStamp) {
+		this.orderUpdatedTimeStamp = orderUpdatedTimeStamp;
+	}
+
+	public Integer getOrderQuantity() {
+		return orderQuantity;
+	}
+
+	public void setOrderQuantity(Integer orderQuantity) {
+		this.orderQuantity = orderQuantity;
+	}
+
+	public Double getOrderTotalAmount() {
+		return orderTotalAmount;
+	}
+
+	public void setOrderTotalAmount(Double orderTotalAmount) {
+		this.orderTotalAmount = orderTotalAmount;
+	}
+
+	public Payment getPayment() {
+		return payment;
+	}
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public List<OrderProductDetails> getListOfProducts() {
+		return listOfProducts;
+	}
+
+	public void setListOfProducts(List<OrderProductDetails> listOfProducts) {
+		this.listOfProducts = listOfProducts;
+	}
+
+	public Boolean getIsOrderCancelled() {
+		return isOrderCancelled;
+	}
+
+	public void setIsOrderCancelled(Boolean isOrderCancelled) {
+		this.isOrderCancelled = isOrderCancelled;
+	}
+
+	public Boolean getIsOrderReturned() {
+		return isOrderReturned;
+	}
+
+	public void setIsOrderReturned(Boolean isOrderReturned) {
+		this.isOrderReturned = isOrderReturned;
+	}
+
+	public Boolean getIsOrderReplaced() {
+		return isOrderReplaced;
+	}
+
+	public void setIsOrderReplaced(Boolean isOrderReplaced) {
+		this.isOrderReplaced = isOrderReplaced;
+	}
+
+	public Boolean getIsOrderRefunded() {
+		return isOrderRefunded;
+	}
+
+	public void setIsOrderRefunded(Boolean isOrderRefunded) {
+		this.isOrderRefunded = isOrderRefunded;
+	}
+
+	public Boolean getIsOrderDelivered() {
+		return isOrderDelivered;
+	}
+
+	public void setIsOrderDelivered(Boolean isOrderDelivered) {
+		this.isOrderDelivered = isOrderDelivered;
+	}
+
+	public Boolean getIsReplacementOrder() {
+		return isReplacementOrder;
+	}
+
+	public void setIsReplacementOrder(Boolean isReplacementOrder) {
+		this.isReplacementOrder = isReplacementOrder;
+	}
+
+	public Integer getOriginalOrderId() {
+		return originalOrderId;
+	}
+
+	public void setOriginalOrderId(Integer originalOrderId) {
+		this.originalOrderId = originalOrderId;
+	}
+
 }

@@ -20,9 +20,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Table(name = "payments")
 public class Payment {
 
@@ -44,6 +44,57 @@ public class Payment {
 	
 	@JsonIgnore
 	@OneToOne(mappedBy = "payment")
-	private Order order; 
+	private Order order;
+
 	
+	
+	
+	public Integer getPaymentId() {
+		return paymentId;
+	}
+
+	public void setPaymentId(Integer paymentId) {
+		this.paymentId = paymentId;
+	}
+
+	public String getPaymentType() {
+		return paymentType;
+	}
+
+	public void setPaymentType(String paymentType) {
+		this.paymentType = paymentType;
+	}
+
+	public Boolean getAllowed() {
+		return allowed;
+	}
+
+	public void setAllowed(Boolean allowed) {
+		this.allowed = allowed;
+	}
+
+	public LocalDateTime getPaymentAddedTimeStamp() {
+		return paymentAddedTimeStamp;
+	}
+
+	public void setPaymentAddedTimeStamp(LocalDateTime paymentAddedTimeStamp) {
+		this.paymentAddedTimeStamp = paymentAddedTimeStamp;
+	}
+
+	public LocalDateTime getPaymentUpdatedTimeStamp() {
+		return paymentUpdatedTimeStamp;
+	}
+
+	public void setPaymentUpdatedTimeStamp(LocalDateTime paymentUpdatedTimeStamp) {
+		this.paymentUpdatedTimeStamp = paymentUpdatedTimeStamp;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	} 
+
 }

@@ -25,9 +25,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Table(name = "feedbacks")
 public class Feedback {
 
@@ -67,5 +67,85 @@ public class Feedback {
 	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "orderId")
 	private Order order;
+
+	public Integer getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(Integer feedback) {
+		this.feedback = feedback;
+	}
+
+	public String getCustomerFeedback() {
+		return customerFeedback;
+	}
+
+	public void setCustomerFeedback(String customerFeedback) {
+		this.customerFeedback = customerFeedback;
+	}
+
+	public Boolean getDeliverOrderFeedback() {
+		return deliverOrderFeedback;
+	}
+
+	public void setDeliverOrderFeedback(Boolean deliverOrderFeedback) {
+		this.deliverOrderFeedback = deliverOrderFeedback;
+	}
+
+	public Boolean getCancelOrderFeedback() {
+		return cancelOrderFeedback;
+	}
+
+	public void setCancelOrderFeedback(Boolean cancelOrderFeedback) {
+		this.cancelOrderFeedback = cancelOrderFeedback;
+	}
+
+	public Boolean getReplacementOrderFeedback() {
+		return replacementOrderFeedback;
+	}
+
+	public void setReplacementOrderFeedback(Boolean replacementOrderFeedback) {
+		this.replacementOrderFeedback = replacementOrderFeedback;
+	}
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
+	public Double getRating() {
+		return rating;
+	}
+
+	public void setRating(Double rating) {
+		this.rating = rating;
+	}
+
+	public LocalDateTime getFeedbackTimeStamp() {
+		return feedbackTimeStamp;
+	}
+
+	public void setFeedbackTimeStamp(LocalDateTime feedbackTimeStamp) {
+		this.feedbackTimeStamp = feedbackTimeStamp;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
 	
 }

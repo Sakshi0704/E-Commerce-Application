@@ -14,16 +14,18 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "roles")
 public class Role {
 
@@ -35,7 +37,31 @@ public class Role {
 	private String roleName;
 	
 	@JsonIgnore
-	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "roles")
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "roles")
 	private List<Customer> users = new ArrayList<>();
-	
+
+	public Integer getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
+	}
+
+	public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+
+	public List<Customer> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<Customer> users) {
+		this.users = users;
+	}
+
 }

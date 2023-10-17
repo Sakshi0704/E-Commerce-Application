@@ -17,8 +17,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Entity
-@Table(name = "review")
+@Table(name = "reviews")
 public class Review {
 
 	@Id

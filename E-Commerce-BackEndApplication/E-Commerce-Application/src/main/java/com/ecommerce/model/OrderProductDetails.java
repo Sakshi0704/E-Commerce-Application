@@ -13,9 +13,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Embeddable
 public class OrderProductDetails {
 
@@ -44,4 +44,77 @@ public class OrderProductDetails {
 	
 	@Column(columnDefinition = "boolean default false", nullable = false)
 	private Boolean isReplacementProduct;
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public Integer getProductQuantity() {
+		return productQuantity;
+	}
+
+	public void setProductQuantity(Integer productQuantity) {
+		this.productQuantity = productQuantity;
+	}
+
+	public Double getProductTotalAmount() {
+		return productTotalAmount;
+	}
+
+	public void setProductTotalAmount(Double productTotalAmount) {
+		this.productTotalAmount = productTotalAmount;
+	}
+
+	public Boolean getIsProductCancelled() {
+		return isProductCancelled;
+	}
+
+	public void setIsProductCancelled(Boolean isProductCancelled) {
+		this.isProductCancelled = isProductCancelled;
+	}
+
+	public Boolean getIsProductReturned() {
+		return isProductReturned;
+	}
+
+	public void setIsProductReturned(Boolean isProductReturned) {
+		this.isProductReturned = isProductReturned;
+	}
+
+	public Boolean getIsProductReplaced() {
+		return isProductReplaced;
+	}
+
+	public void setIsProductReplaced(Boolean isProductReplaced) {
+		this.isProductReplaced = isProductReplaced;
+	}
+
+	public Boolean getIsProductRefunded() {
+		return isProductRefunded;
+	}
+
+	public void setIsProductRefunded(Boolean isProductRefunded) {
+		this.isProductRefunded = isProductRefunded;
+	}
+
+	public Boolean getIsProductDelievered() {
+		return isProductDelievered;
+	}
+
+	public void setIsProductDelievered(Boolean isProductDelievered) {
+		this.isProductDelievered = isProductDelievered;
+	}
+
+	public Boolean getIsReplacementProduct() {
+		return isReplacementProduct;
+	}
+
+	public void setIsReplacementProduct(Boolean isReplacementProduct) {
+		this.isReplacementProduct = isReplacementProduct;
+	}
+
 }

@@ -22,10 +22,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "pickUpOrderRequest")
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
+@Table(name = "pickUpOrderRequests")
 public class PickUpOrderRequest {
 
 	@Id

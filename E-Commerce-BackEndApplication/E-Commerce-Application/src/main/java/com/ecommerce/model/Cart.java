@@ -19,9 +19,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Table(name = "carts")
 public class Cart {
 
@@ -36,5 +36,41 @@ public class Cart {
 	
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<CartProductDetails> listOfProducts = new ArrayList<>();
+
+	
+	
+	
+	public Integer getCartId() {
+		return cartId;
+	}
+
+	public void setCartId(Integer cartId) {
+		this.cartId = cartId;
+	}
+
+	public Integer getCartQuantity() {
+		return cartQuantity;
+	}
+
+	public void setCartQuantity(Integer cartQuantity) {
+		this.cartQuantity = cartQuantity;
+	}
+
+	public Double getCartTotalAmount() {
+		return cartTotalAmount;
+	}
+
+	public void setCartTotalAmount(Double cartTotalAmount) {
+		this.cartTotalAmount = cartTotalAmount;
+	}
+
+	public List<CartProductDetails> getListOfProducts() {
+		return listOfProducts;
+	}
+
+	public void setListOfProducts(List<CartProductDetails> listOfProducts) {
+		this.listOfProducts = listOfProducts;
+	}
+
 	
 }

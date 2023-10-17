@@ -27,9 +27,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Table(name = "products")
 public class Product {
 
@@ -86,4 +86,157 @@ public class Product {
 	
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private Long totalSales;
+
+	public Integer getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Integer productId) {
+		this.productId = productId;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public String getProductDescription() {
+		return productDescription;
+	}
+
+	public void setProductDescription(String productDescription) {
+		this.productDescription = productDescription;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Double getSalePrice() {
+		return salePrice;
+	}
+
+	public void setSalePrice(Double salePrice) {
+		this.salePrice = salePrice;
+	}
+
+	public Double getMarketPrice() {
+		return marketPrice;
+	}
+
+	public void setMarketPrice(Double marketPrice) {
+		this.marketPrice = marketPrice;
+	}
+
+	public Integer getDiscountPercentage() {
+		return discountPercentage;
+	}
+
+	public void setDiscountPercentage(Integer discountPercentage) {
+		this.discountPercentage = discountPercentage;
+	}
+
+	public Integer getStockQuantity() {
+		return stockQuantity;
+	}
+
+	public void setStockQuantity(Integer stockQuantity) {
+		this.stockQuantity = stockQuantity;
+	}
+
+	public Double getRating() {
+		return rating;
+	}
+
+	public void setRating(Double rating) {
+		this.rating = rating;
+	}
+
+	public Integer getManufacturingYear() {
+		return manufacturingYear;
+	}
+
+	public void setManufacturingYear(Integer manufacturingYear) {
+		this.manufacturingYear = manufacturingYear;
+	}
+
+	public Integer getManufacturingMonth() {
+		return manufacturingMonth;
+	}
+
+	public void setManufacturingMonth(Integer manufacturingMonth) {
+		this.manufacturingMonth = manufacturingMonth;
+	}
+
+	public Boolean getAvaiable() {
+		return avaiable;
+	}
+
+	public void setAvaiable(Boolean avaiable) {
+		this.avaiable = avaiable;
+	}
+
+	public LocalDateTime getProductAddedDateTime() {
+		return productAddedDateTime;
+	}
+
+	public void setProductAddedDateTime(LocalDateTime productAddedDateTime) {
+		this.productAddedDateTime = productAddedDateTime;
+	}
+
+	public LocalDateTime getProductUpdatedDateTime() {
+		return productUpdatedDateTime;
+	}
+
+	public void setProductUpdatedDateTime(LocalDateTime productUpdatedDateTime) {
+		this.productUpdatedDateTime = productUpdatedDateTime;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public List<Review> getListOfReviews() {
+		return listOfReviews;
+	}
+
+	public void setListOfReviews(List<Review> listOfReviews) {
+		this.listOfReviews = listOfReviews;
+	}
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
+	}
+
+	public Long getTotalSales() {
+		return totalSales;
+	}
+
+	public void setTotalSales(Long totalSales) {
+		this.totalSales = totalSales;
+	}
+
 }
