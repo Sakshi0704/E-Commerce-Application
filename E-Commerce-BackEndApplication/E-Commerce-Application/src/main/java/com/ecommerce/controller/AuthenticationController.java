@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -97,7 +98,32 @@ public class AuthenticationController {
 		return new ResponseEntity<Customer>(customer,HttpStatus.OK);			
 	}
 	
+	@GetMapping("/admins/signout")
+	public ResponseEntity<String> logoutAdminHandler(@RequestHeader("Authorization") String token , Authentication auth){
+		
+		Customer customer = customerService.getCustomerByEmail(auth.getName());
+		
+		token = null;
+		
+		return new ResponseEntity<String>(customer.getFirstName()+" "+customer.getLastName()+" is logout successful",HttpStatus.OK);			
+	}
 	
 	
+	@GetMapping("/users/signout")
+	public ResponseEntity<String> logoutUserHandler(@RequestHeader("Authorization") String token , Authentication auth){
+		
+		Customer customer = customerService.getCustomerByEmail(auth.getName());
+		
+		token = null;
+		
+		return new ResponseEntity<String>(customer.getFirstName()+" "+customer.getLastName()+" is logout successful",HttpStatus.OK);			
+	}
 
+	@GetMapping("/users/message")
+	public ResponseEntity<String> logoutUserHandler(@RequestHeader()){
+		
+		return new ResponseEntity<String>(customer.getFirstName()+" "+customer.getLastName()+" is logout successful",HttpStatus.OK);			
+	}
+
+	
 }

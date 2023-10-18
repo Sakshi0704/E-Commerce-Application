@@ -57,7 +57,8 @@ public class JwtTokenValidatorFilter extends OncePerRequestFilter{
 	// this time this validation filter has to be executed for all the apis except the /signIn api
 		@Override
 		protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-			return request.getServletPath().equals("/buymart/auth/users/signin") || request.getServletPath().equals("/buymart/auth/admins/signin");
+			boolean result = request.getServletPath().equals("/buymart/auth/users/signin") || request.getServletPath().equals("/buymart/auth/admins/signin");
+			return result;
 		}
 
 }

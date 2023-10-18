@@ -67,7 +67,10 @@ public class JwtTokenGeneratorFilter extends OncePerRequestFilter{
 	@Override
 	protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
 			
-		       boolean result = request.getServletPath().equals("/buymart/auth/users/signin") || request.getServletPath().equals("/buymart/auth/admins/signin");
+		       boolean result = request.getServletPath().equals("/buymart/auth/users/signin") 
+		    		   || request.getServletPath().equals("/buymart/auth/admins/signin")
+		    		   || request.getServletPath().equals("/buymart/auth/admins/signout")
+		    		   || request.getServletPath().equals("/buymart/auth/users/signin");
 			
 		       return !result;
 		}
