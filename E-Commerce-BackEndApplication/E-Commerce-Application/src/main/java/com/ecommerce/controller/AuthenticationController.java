@@ -78,7 +78,6 @@ public class AuthenticationController {
 		Customer saveAdmin = customerService.registerCustomer(customer);
 
 		return new ResponseEntity<Customer>(saveAdmin, HttpStatus.CREATED);
-
 	}
 	
 	@PostMapping("/customers/signin")
@@ -98,7 +97,7 @@ public class AuthenticationController {
 	}
 	
 	
-	
+
 	
 
 }
