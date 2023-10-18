@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.exception.DataAlreadyExitsException;
+import com.ecommerce.exception.NoDataFoundException;
 import com.ecommerce.model.Customer;
 import com.ecommerce.repository.CustomerRepository;
 import com.ecommerce.service.CustomerService;
@@ -31,5 +32,20 @@ public class CustomerServiceImpl implements CustomerService{
 		
 		return customer;
 	}
+
+
+	@Override
+	public Customer getCustomerByEmail(String email) throws NoDataFoundException {
+		
+		Optional<Customer> opt = customerRepo.findByEmail(email);
+		
+		if(!opt.isPresent()) {
+			throw new NoDataFoundException("User doesn't found with email "+ email);
+		}
+		
+		return opt.get();
+	}
+	
+	
 	
 }

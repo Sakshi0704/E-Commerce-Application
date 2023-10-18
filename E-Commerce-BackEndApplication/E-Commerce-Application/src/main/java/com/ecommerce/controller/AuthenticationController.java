@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -61,13 +61,9 @@ public class AuthenticationController {
 	@PostMapping("/customers/signup") 
 	public ResponseEntity<Customer> registerUserHandler(@Valid @RequestBody Customer customer) {
 
-	
 		customer.setRole(AppConstants.ROLE_USER);
-
 		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
-
 		Customer saveCustomer = customerService.registerCustomer(customer);
-
 		return new ResponseEntity<Customer>(saveCustomer, HttpStatus.CREATED);
 	}
 
@@ -84,5 +80,25 @@ public class AuthenticationController {
 		return new ResponseEntity<Customer>(saveAdmin, HttpStatus.CREATED);
 
 	}
+	
+	@PostMapping("/customers/signin")
+	public ResponseEntity<Customer> loginUserHandler(Authentication auth){
+		
+		Customer customer = customerService.getCustomerByEmail(auth.getName());
+		
+		return new ResponseEntity<Customer>(customer,HttpStatus.OK);			
+	}
+	
+	@PostMapping("/admins/signin")
+	public ResponseEntity<Customer> loginAdminHandler(Authentication auth){
+		
+		Customer customer = customerService.getCustomerByEmail(auth.getName());
+		
+		return new ResponseEntity<Customer>(customer,HttpStatus.OK);			
+	}
+	
+	
+	
+	
 
 }
