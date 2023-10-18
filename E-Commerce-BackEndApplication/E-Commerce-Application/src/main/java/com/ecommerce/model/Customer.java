@@ -11,6 +11,7 @@ import java.util.Set;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -74,29 +75,21 @@ public class Customer {
 	@JoinColumn(name = "addressId")
 	private Address address;
 	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "cartId")
 	private Cart cart;
 	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "customer")
 	private List<Review> listOfReviews = new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "customer")
 	private List<Order> listOfOrders = new ArrayList<>();
-	
-//	@OneToMany(cascade = CascadeType.ALL)
-//	private List<CancelOrderRequest> listOfCancelOrders = new ArrayList<>();
-//	
-//	@OneToMany(cascade = CascadeType.ALL)
-//	private List<ReplaceOrderRequest> listOfReplaceOrders = new ArrayList<>();
-//	
-//	@OneToMany(cascade = CascadeType.ALL)
-//	private List<RefundOrderRequest> listOfRefunds = new ArrayList<>();
-//	
-	
-	@ManyToOne(cascade = CascadeType.MERGE , fetch = FetchType.EAGER)
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userId" , referencedColumnName = "userId"),inverseJoinColumns = @JoinColumn(name = "roleId", referencedColumnName = "roleId"))
-	private Role role;
+
+	@JsonProperty(access = Access.READ_ONLY)
+	private String role;
 
 	public Integer getUserId() {
 		return userId;
@@ -210,11 +203,11 @@ public class Customer {
 		this.listOfOrders = listOfOrders;
 	}
 
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 }

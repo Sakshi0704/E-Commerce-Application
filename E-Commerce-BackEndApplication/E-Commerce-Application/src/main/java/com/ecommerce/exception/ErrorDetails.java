@@ -6,7 +6,7 @@ public class ErrorDetails {
 
 	private LocalDateTime timeStamp;
 	private String message;
-	private String details;
+	private String description;
 	
 	
 	public LocalDateTime getTimeStamp() {
@@ -21,12 +21,11 @@ public class ErrorDetails {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public String getDetails() {
-		return details;
+	public String getDescription() {
+		return description;
 	}
-	public void setDetails(String details) {
-		this.details = details;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	
 	
 }

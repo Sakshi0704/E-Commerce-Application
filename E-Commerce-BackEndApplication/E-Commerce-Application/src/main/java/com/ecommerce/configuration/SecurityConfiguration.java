@@ -12,8 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
-import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
@@ -22,16 +20,19 @@ import jakarta.servlet.http.HttpServletRequest;
 @Configuration
 public class SecurityConfiguration {
 
-	public static final String PUBLIC_URLS[] = {};
+	public static final String[] PUBLIC_URLS = {"/buymart/auth/customers/signup", 
+											"/buymart/auth/customers/signin",
+												"/buymart/auth/admins/signup"
+			
+						};
 	
 	public static final String USER_ADMIN_URLS[] = {};
 	
 	public static final String ADMIN_URLS[] = {};
 	
+	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-		
-		CsrfTokenRequestAttributeHandler requestHandler = new CsrfTokenRequestAttributeHandler();
 		
 		http.sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 		.cors(cors -> cors.configurationSource(new CorsConfigurationSource() {
@@ -50,22 +51,20 @@ public class SecurityConfiguration {
 		}))
 		.authorizeHttpRequests(auth -> {
 			auth
+			  .requestMatchers("/swagger-ui*/**","/v3/api-docs/**").permitAll()
 			  .requestMatchers(PUBLIC_URLS).permitAll()
 			  .requestMatchers(ADMIN_URLS).hasRole("ADMIN")
 			  .requestMatchers(USER_ADMIN_URLS).hasAnyRole("ADMIN","USER")  // what is ** is showing PathVeriable -----
 			  .anyRequest().authenticated();
 		})
-		.csrf(csrf -> csrf.csrfTokenRequestHandler(requestHandler)
-				.ignoringRequestMatchers("/notice","/contact","/customers")
-					.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
-		.addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
-		//.csrf(csrf -> csrf.disable())
+		.csrf(csrf -> csrf.disable())
 		.addFilterAfter(new JwtTokenGeneratorFilter(), BasicAuthenticationFilter.class)
 		.addFilterBefore(new JwtTokenValidatorFilter(), BasicAuthenticationFilter.class)
 		.formLogin(Customizer.withDefaults())
 		.httpBasic(Customizer.withDefaults());
 		
 		return http.build();	
+		
 	}
 	
 	@Bean

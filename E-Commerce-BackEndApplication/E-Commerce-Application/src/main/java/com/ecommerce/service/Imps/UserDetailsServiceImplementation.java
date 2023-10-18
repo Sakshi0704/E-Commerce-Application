@@ -1,4 +1,4 @@
-package com.ecommerce.service;
+package com.ecommerce.service.Imps;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class UserDetailsServiceImplementation implements UserDetailsService{
 		
 			// Empty Authorities
 			 List<GrantedAuthority> authorities = new ArrayList<>();
-				 authorities.add(new SimpleGrantedAuthority(customer.getRole().getRoleName())); 
+				 authorities.add(new SimpleGrantedAuthority(customer.getRole())); 
 			 
 		      return new User(customer.getEmail(), customer.getPassword(), authorities);
 		      
