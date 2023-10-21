@@ -1,10 +1,19 @@
 package com.ecommerce.controller;
 
+import java.util.Date;
+
+import javax.crypto.SecretKey;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,10 +22,16 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ecommerce.configuration.SecurityConstants;
 import com.ecommerce.model.Customer;
 import com.ecommerce.payload.AppConstants;
 import com.ecommerce.service.CustomerService;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
 @RestController
@@ -109,23 +124,22 @@ public class AuthenticationController {
 	}
 	
 	
-	@GetMapping("/users/signout")
-	public ResponseEntity<String> logoutUserHandler(@RequestHeader("Authorization") String token , Authentication auth){
-		
-		Customer customer = customerService.getCustomerByEmail(auth.getName());
-		
-		token = null;
-		
-		return new ResponseEntity<String>(customer.getFirstName()+" "+customer.getLastName()+" is logout successful",HttpStatus.OK);			
-	}
-
 	@GetMapping("/users/message")
 	public ResponseEntity<String> afterSignInGetMessageHandler(Authentication auth){
 		
 		Customer customer = customerService.getCustomerByEmail(auth.getName());
 		
 		return new ResponseEntity<String>(customer.getFirstName()+" "+customer.getLastName()+" welcome with perface smile ",HttpStatus.OK);			
+		
 	}
 
-	
+	@GetMapping("/users/signout")
+	public ResponseEntity<String> logoutUserHandler(Authentication auth, HttpServletRequest request) {
+	    Customer customer = customerService.getCustomerByEmail(auth.getName());
+
+	    String jwt = request.getHeader(SecurityConstants.JWT_HEADER);
+
+	    return new ResponseEntity<String>(customer.getFirstName() + " " + customer.getLastName() + " is logout successful", HttpStatus.OK);
+	}
+
 }

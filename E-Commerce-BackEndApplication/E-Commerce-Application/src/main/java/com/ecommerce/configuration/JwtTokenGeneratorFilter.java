@@ -45,6 +45,7 @@ public class JwtTokenGeneratorFilter extends OncePerRequestFilter{
 					.setIssuedAt(new Date())
 					.setExpiration(new Date(new Date().getTime() + 30000000)) // expiration time of 8 hours
 					.signWith(key).compact();
+					
 			
 			response.setHeader(SecurityConstants.JWT_HEADER, jwt);
 			
@@ -68,10 +69,8 @@ public class JwtTokenGeneratorFilter extends OncePerRequestFilter{
 	protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
 			
 		       boolean result = request.getServletPath().equals("/buymart/auth/users/signin") 
-		    		   || request.getServletPath().equals("/buymart/auth/admins/signin")
-		    		   || request.getServletPath().equals("/buymart/auth/admins/signout")
-		    		   || request.getServletPath().equals("/buymart/auth/users/signin");
-			
+		    		   || request.getServletPath().equals("/buymart/auth/admins/signin");
+		    		   
 		       return !result;
 		}
 

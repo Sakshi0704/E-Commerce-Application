@@ -26,7 +26,8 @@ public class SecurityConfiguration {
 						};
 	
 	public static final String USER_ADMIN_URLS[] = {"/buymart/auth/users/signin",
-			"/buymart/auth/users/signout"
+			"/buymart/auth/users/signout",
+			"/buymart/auth/users/message"
 	};
 	
 	public static final String ADMIN_URLS[] = {"/buymart/auth/admins/signin",
