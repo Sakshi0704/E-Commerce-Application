@@ -78,6 +78,7 @@ public class AuthenticationController {
 	@PostMapping("/users/signup") 
 	public ResponseEntity<Customer> registerUserHandler(@Valid @RequestBody Customer customer) {
 
+		System.out.println("inside the registerUser Handler");
 		customer.setRole(AppConstants.ROLE_USER);
 		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
 		Customer saveCustomer = customerService.registerCustomer(customer);
