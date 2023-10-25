@@ -13,6 +13,11 @@ public class CustomerController {
 	@Autowired
 	public CustomerService customerService;
 	
+
+	public ResponseEntity<Customer> getCustomerById(){
+		
+		return new ResponseEntity<Customer>(customer,HttpStatus.OK);
+	}
 	
 	
 }
