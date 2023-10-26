@@ -20,4 +20,10 @@ public class CustomerController {
 	}
 	
 	
+
+	
+	public ResponseEntity<Customer> getCustomerByEmail(){
+		
+		return new ResponseEntity<Customer>(customer,HttpStatus.OK);
+	}
 }
