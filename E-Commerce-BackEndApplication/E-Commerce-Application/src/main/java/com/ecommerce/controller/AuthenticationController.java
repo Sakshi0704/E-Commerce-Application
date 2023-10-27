@@ -140,6 +140,8 @@ public class AuthenticationController {
 
 	    String jwt = request.getHeader(SecurityConstants.JWT_HEADER);
 
+		System.out.println("inside the logout handler");
+
 	    return new ResponseEntity<String>(customer.getFirstName() + " " + customer.getLastName() + " is logout successful", HttpStatus.OK);
 	}
 
@@ -147,7 +149,8 @@ public class AuthenticationController {
 	public ResponseEntity<String> afterSignInGetMessageHandler2(Authentication auth){
 		
 		Customer customer = customerService.getCustomerByEmail(auth.getName());
-		
+		System.out.println("inside the users message handler");
+
 		return new ResponseEntity<String>(customer.getFirstName()+" "+customer.getLastName()+" welcome with perface smile ",HttpStatus.OK);			
 		
 	}
