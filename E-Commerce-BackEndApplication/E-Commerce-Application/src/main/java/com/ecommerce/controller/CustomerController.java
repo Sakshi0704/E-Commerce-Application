@@ -26,4 +26,11 @@ public class CustomerController {
 		
 		return new ResponseEntity<Customer>(customer,HttpStatus.OK);
 	}
+
+
+	
+	public ResponseEntity<Customer> getCustomerByName(){
+		
+		return new ResponseEntity<Customer>(customer,HttpStatus.OK);
+	}
 }
