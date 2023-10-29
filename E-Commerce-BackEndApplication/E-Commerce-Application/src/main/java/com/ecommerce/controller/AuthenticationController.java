@@ -124,15 +124,6 @@ public class AuthenticationController {
 		return new ResponseEntity<String>(customer.getFirstName()+" "+customer.getLastName()+" is logout successful",HttpStatus.OK);			
 	}
 	
-	
-	@GetMapping("/users/message")
-	public ResponseEntity<String> afterSignInGetMessageHandler(Authentication auth){
-		
-		Customer customer = customerService.getCustomerByEmail(auth.getName());
-		
-		return new ResponseEntity<String>(customer.getFirstName()+" "+customer.getLastName()+" welcome with perface smile ",HttpStatus.OK);			
-		
-	}
 
 	@GetMapping("/users/signout")
 	public ResponseEntity<String> logoutUserHandler(Authentication auth, HttpServletRequest request) {

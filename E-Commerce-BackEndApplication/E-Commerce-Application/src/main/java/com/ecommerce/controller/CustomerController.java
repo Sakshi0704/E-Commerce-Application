@@ -14,23 +14,4 @@ public class CustomerController {
 	public CustomerService customerService;
 	
 
-	public ResponseEntity<Customer> getCustomerById(){
-		
-		return new ResponseEntity<Customer>(customer,HttpStatus.OK);
-	}
-	
-	
-
-	
-	public ResponseEntity<Customer> getCustomerByEmail(){
-		
-		return new ResponseEntity<Customer>(customer,HttpStatus.OK);
-	}
-
-
-	
-	public ResponseEntity<Customer> getCustomerByName(){
-		
-		return new ResponseEntity<Customer>(customer,HttpStatus.OK);
-	}
 }
