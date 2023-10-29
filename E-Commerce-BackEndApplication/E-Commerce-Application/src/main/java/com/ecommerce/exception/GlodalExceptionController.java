@@ -13,11 +13,17 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @ControllerAdvice
 public class GlodalExceptionController {
 
-	
-	
-	
-	
-	
+	@ExceptionHandler(DataAlreadyExitsException.class)
+	public ResponseEntity<ErrorDetails> noHandlerFoundExceptionHandler(DataAlreadyExitsException ex, WebRequest wr){
+		
+		ErrorDetails errorDetails = new ErrorDetails();
+		
+		errorDetails.setTimeStamp(LocalDateTime.now());
+		errorDetails.setMessage(ex.getMessage());
+		errorDetails.setDescription(wr.getDescription(false));
+		
+		return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+	}
 	
 	@ExceptionHandler(NoHandlerFoundException.class)
 	public ResponseEntity<ErrorDetails> noHandlerFoundExceptionHandler(NoHandlerFoundException ex, WebRequest wr){
