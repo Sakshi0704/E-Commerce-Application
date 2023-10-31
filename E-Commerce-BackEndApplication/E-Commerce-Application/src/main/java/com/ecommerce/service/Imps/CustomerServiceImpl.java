@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.exception.DataAlreadyExitsException;
-import com.ecommerce.exception.NoDataFoundException;
+
+import com.ecommerce.exception.ResourceNotFoundException;
 import com.ecommerce.model.Customer;
 import com.ecommerce.repository.CustomerRepository;
 import com.ecommerce.service.CustomerService;
@@ -20,7 +21,7 @@ public class CustomerServiceImpl implements CustomerService{
 	
 	
 	@Override
-	public Customer registerCustomer(Customer customer) throws DataAlreadyExitsException {
+	public Customer registerCustomer(Customer customer) throws ResourceNotFoundException {
 
 		Optional<Customer> opt = customerRepo.findByEmail(customer.getEmail());
 		
@@ -35,15 +36,22 @@ public class CustomerServiceImpl implements CustomerService{
 
 
 	@Override
-	public Customer getCustomerByEmail(String email) throws NoDataFoundException {
+	public Customer getCustomerByEmail(String email) throws ResourceNotFoundException {
 		
 		Optional<Customer> opt = customerRepo.findByEmail(email);
 		
 		if(!opt.isPresent()) {
-			throw new NoDataFoundException("User doesn't found with email "+ email);
+			throw new ResourceNotFoundException("User doesn't found with email "+ email);
 		}
 		
 		return opt.get();
+	}
+
+
+	@Override
+	public Customer updateCustomerDetails(String contact, Customer customer) throws ResourceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
